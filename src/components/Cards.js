@@ -1,10 +1,10 @@
 import React from 'react';
-import hotelssData from "../data";
+import hotelsData from "../data";
 import Card from './Card';
 
 function Cards() {
-    return hotelssData.map((hotelData) => (
-		<Card {...hotelData} />
+    return hotelsData.map((data) => (
+		<Card {...data} />
 	));
 }
 
