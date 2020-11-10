@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StateContext } from './StateContext';
 
 function Header () {
+    const [ state, setState ] = useContext(StateContext)
+
     return(
         <header>
             <h1>Hoteles</h1>
-            <p>desde el <spam>martes, 01 de enero de 2019</spam> hasta el <spam>miércoles, 02 de enero de 2019</spam></p>
+            <p>desde el <spam>{state.dateStart}</spam> hasta el <spam>{state.dateEnd}</spam></p>
         </header>
     )
 }
