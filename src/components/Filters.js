@@ -1,11 +1,6 @@
 import React, { useContext } from 'react';
-import Date from './Date';
-import Countries from './Countries';
-import Prices from './Prices';
-import Size from './Size';
 import { StateContext } from './StateContext';
 import styled from "styled-components";
-
 
 const Nav = styled.nav`
     padding: 1rem;
@@ -16,14 +11,44 @@ const Nav = styled.nav`
 `
 
 function Filters(){
+
+    const [state, setState] = useContext(StateContext);
+
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+        const values = { ...state, [name]: value };
+        setState(values);
+        console.log(state);
+    };
+
     return(
-        <nav>
-            <Date />
-            <Date />
-            <Countries />
-            <Prices />
-            <Size />
-        </nav>
+        <Nav>
+            <input name="dateIn"  type="date" onChange={handleInput}/>
+            <input name="dateOut" type="date" onChange={handleInput}/>
+            
+            <select name="countries" onChange={handleInput}>
+                <option value="0">Todos los países</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Chile">Chile</option>
+                <option value="Uruguay">Uruguay</option>
+            </select>
+
+            <select name="price" onChange={handleInput}>
+                <option value="0">Cualquier precio</option>
+                <option value="1">$</option>
+                <option value="2">$$</option>
+                <option value="3">$$$</option>
+                <option value="4">$$$$</option>
+            </select>
+
+            <select name="size" onChange={handleInput}>
+                <option value="0">Cualquier tamaño</option>
+                <option value="1">Hotel pequeño</option>
+                <option value="2">Hotel mediano</option>
+                <option value="3">Hotel grande</option>
+            </select>
+        </Nav>
     )
 }
 
