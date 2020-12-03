@@ -4,11 +4,11 @@ export const StateContext = createContext();
 
 export const Provider = (props) => {
     const [ state, setState ] = useState({
-        dateStart: "",
-        dateEnd: "",
-        price: "",
-        size: "",
-        countries: ""
+        dateIn: {},
+        dateOut: {},
+        country: "cualquier país",
+        price: "cualquier precio",
+        size: "cualquier tamaño"
     });
 
     return(

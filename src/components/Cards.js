@@ -13,7 +13,49 @@ const CardsConteiner = styled.div`
 `
 
 function Cards() {
+	const [state] = useContext(StateContext);
 
+	// const filterDate = () => {
+		
+	// }
+
+	const filterCountry = (hotel) => {
+		if (
+			state.country === 'cualquier país' ||
+			state.country === hotel.country
+			)
+			return true;
+	};
+
+	const filterPrice = (hotel) => {
+		if(
+			state.price === 'cualquier precio' ||
+			Number(state.price) === hotel.price
+		)
+		return true;
+	};
+
+	const filterSize = (hotel) => {
+		if (
+			state.size === 'cualquier tamaño' ||
+			(state.size === 'tamaño pequeño' && hotel.rooms <= 10) ||
+			(state.size === 'tamaño mediano' && hotel.rooms <= 20 && hotel.rooms >= 10) ||
+			(state.size === 'tamaño grande' && hotel.rooms >= 20)
+			)
+			return true;
+	};
+
+	const filterValidator = (hotel) => {
+		return(
+			filterCountry(hotel) &&
+			filterSize(hotel) &&
+			filterPrice(hotel)
+		);
+	};
+
+	const hotelsResult = hotelsData.filter(filterValidator);
+	console.log(hotelsResult);
+	
 	return(
 		<CardsConteiner>
 			{hotelsData.map((data) => {
