@@ -6,7 +6,7 @@ export const Provider = (props) => {
     const [ state, setState ] = useState({
         dateIn: {},
         dateOut: {},
-        country: "cualquier país",
+        country: "cualquier pais",
         price: "cualquier precio",
         size: "cualquier tamaño"
     });

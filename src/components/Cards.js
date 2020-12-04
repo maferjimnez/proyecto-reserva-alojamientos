@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
+import { StateContext } from './StateContext';
 import hotelsData from "../data";
 import Card from './Card';
-import { StateContext } from './StateContext';
 import styled from "styled-components";
+import moment from 'moment';
 
 const CardsConteiner = styled.div`
 	padding: 5rem;
@@ -15,13 +16,24 @@ const CardsConteiner = styled.div`
 function Cards() {
 	const [state] = useContext(StateContext);
 
-	// const filterDate = () => {
-		
-	// }
+	const dateFormat = 'YYYY-MM-DD';
+	const stateDateIn = moment(state.dateIn).format(dateFormat);
+	const stateDateOut = moment(state.dateOut).format(dateFormat);
+	
+	const filterDate = (hotel) => {
+		const dateAvaiableFrom = moment(hotel.availabilityFrom).format(dateFormat);
+		const dateAvailableTo = moment(hotel.availabilityTo).format(dateFormat);
+	
+		if (
+			(stateDateIn >= dateAvaiableFrom &&
+			stateDateOut <= dateAvailableTo)
+		)
+		return true;
+	}
 
 	const filterCountry = (hotel) => {
 		if (
-			state.country === 'cualquier país' ||
+			state.country === 'cualquier pais' ||
 			state.country === hotel.country
 			)
 			return true;
@@ -49,7 +61,8 @@ function Cards() {
 		return(
 			filterCountry(hotel) &&
 			filterSize(hotel) &&
-			filterPrice(hotel)
+			filterPrice(hotel) &&
+			filterDate(hotel)
 		);
 	};
 
@@ -58,11 +71,15 @@ function Cards() {
 	
 	return(
 		<CardsConteiner>
-			{hotelsData.map((data) => {
+			{/* {hotelsData.map((data) => {
 				return (
 					<Card {...data} />
 				)
-			})};
+			})}; */}
+
+			{hotelsResult.map((hotel) => (
+				<Card {...hotel} key={hotel.slug} />
+			))}
 		</CardsConteiner>
 	)
 };

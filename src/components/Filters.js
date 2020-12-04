@@ -32,18 +32,28 @@ function Filters(){
             name="dateIn"
             type="date"
             onChange={handleInput}
-            min={moment().format("YYYY[-]MM[-]DD")}
+            value={
+                Object.keys(state.dateIn).length === 0
+                    ? {}
+                    : moment(state.dateIn).format('YYYY[-]MM[-]DD')
+            }
+            min={moment().format('YYYY[-]MM[-]DD')}
             />
 
             <input
             name="dateOut"
             type="date"
             onChange={handleInput}
+            value={
+                Object.keys(state.dateOut).length === 0
+                    ? {}
+                    : moment(state.dateOut).format('YYYY[-]MM[-]DD')
+            }
             min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
             />
             
             <select name="country" onChange={handleInput}>
-                <option value="cualquier país">Todos los países</option>
+                <option value="cualquier pais">Todos los países</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Brasil">Brasil</option>
                 <option value="Chile">Chile</option>
@@ -64,6 +74,8 @@ function Filters(){
                 <option value="tamaño mediano">Hotel mediano</option>
                 <option value="tamaño grande">Hotel grande</option>
             </select>
+
+            <button>Reset</button>
         </Nav>
     )
 }

@@ -9,9 +9,10 @@ moment.locale('es');
 const HeaderConteiner = styled.header`
     background-image: url(https:/visit.freiburg.de/extension/portal-freiburg/var/storage/images/media/bibliothek/alle-anderen-bilder-1200x800px/02-planen/uebernachten/hotel-schluessel-c-dmitry-kalinovsky-shutterstock/35218-1-ger-DE/hotel-schluessel-c-dmitry-kalinovsky-shutterstock_grid_large.jpg); 
     text-align: center;
-    padding: 8rem;
+    padding: 3rem 8rem;
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
 
     h1{
         text-transform: uppercase;
