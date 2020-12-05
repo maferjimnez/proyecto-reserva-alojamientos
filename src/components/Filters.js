@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { StateContext } from './StateContext';
 import styled from "styled-components";
 import moment from 'moment';
-import 'moment/locale/es';
-moment.locale('es');
 
 const Nav = styled.nav`
     padding: 1rem;
@@ -37,7 +35,6 @@ function Filters(){
                     ? {}
                     : moment(state.dateIn).format('YYYY[-]MM[-]DD')
             }
-            min={moment().format('YYYY[-]MM[-]DD')}
             />
 
             <input

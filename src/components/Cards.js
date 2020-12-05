@@ -25,6 +25,8 @@ function Cards() {
 		const dateAvailableTo = moment(hotel.availabilityTo).format(dateFormat);
 	
 		if (
+			Object.keys(state.dateIn).length === 0 ||
+			Object.keys(state.dateOut).length === 0 ||
 			(stateDateIn >= dateAvaiableFrom &&
 			stateDateOut <= dateAvailableTo)
 		)

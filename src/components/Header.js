@@ -21,14 +21,14 @@ const HeaderConteiner = styled.header`
 `
 
 function Header () {
-    const [ state, setState ] = useContext(StateContext);
+    const [ state ] = useContext(StateContext);
     const dateFormat = 'dddd[,] D [de] MMMM [de] YYYY';
 
 
     return(
         <HeaderConteiner>
             <h1>Hoteles</h1>
-            <p>Estás buscando hoteles ubicados en {state.countries}, de {state.price} y de {state.size}. Día de llegada {moment(state.dateIn).format(dateFormat)}, día de salida {moment(state.dateOut).format(dateFormat)}</p>
+            <p>Día de llegada {moment(state.dateIn).format(dateFormat)}, día de salida {moment(state.dateOut).format(dateFormat)}</p>
         </HeaderConteiner>
     )
 }
