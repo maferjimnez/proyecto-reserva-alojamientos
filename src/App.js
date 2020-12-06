@@ -1,3 +1,4 @@
+import GlobalStyles from './styles/globalStyles';
 import Header from './components/Header.js';
 import Filters from './components/Filters.js';
 import Cards from './components/Cards.js';
@@ -6,11 +7,10 @@ import { Provider } from './components/StateContext';
 function App() {
   return (
     <Provider>
-      <div>
+      <GlobalStyles/>
         <Header />
         <Filters />
         <Cards />
-      </div>
     </Provider>
   );
 };
