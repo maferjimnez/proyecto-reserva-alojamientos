@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { StateContext } from './StateContext';
 import hotelsData from "../data";
 import Card from './Card';
+import Error from './Error';
 import styled from "styled-components";
 import moment from 'moment';
 
@@ -19,6 +20,7 @@ function Cards() {
 	const dateFormat = 'YYYY-MM-DD';
 	const stateDateIn = moment(state.dateIn).format(dateFormat);
 	const stateDateOut = moment(state.dateOut).format(dateFormat);
+	const today = moment().format(dateFormat);
 	
 	const filterDate = (hotel) => {
 		const dateAvaiableFrom = moment(hotel.availabilityFrom).format(dateFormat);
@@ -45,8 +47,12 @@ function Cards() {
 		if(
 			state.price === 'cualquier precio' ||
 			Number(state.price) === hotel.price
-		)
-		return true;
+		){
+			return true;
+		} else {
+			return false;
+		}
+		
 	};
 
 	const filterSize = (hotel) => {
@@ -69,21 +75,29 @@ function Cards() {
 	};
 
 	const hotelsResult = hotelsData.filter(filterValidator);
-	console.log(hotelsResult);
+	console.log(hotelsResult); // *! BORRAR ANTES DE ENTREGAR !* //
 	
-	return(
-		<CardsConteiner>
-			{/* {hotelsData.map((data) => {
-				return (
-					<Card {...data} />
-				)
-			})}; */}
-
-			{hotelsResult.map((hotel) => (
-				<Card {...hotel} key={hotel.slug} />
-			))}
-		</CardsConteiner>
-	)
+	if (hotelsResult.length === 0) {
+		return(
+			<Error e="Parece que tu busqueda no tiene resultados" />		
+		);
+	} else if (stateDateIn > stateDateOut) {
+		return(
+			<Error e="Debes seleccionar una fecha de salida posterior a la de entrada"/>
+		);
+	} else if (stateDateIn < today) {
+		return(
+			<Error e="La fecha de entrada debe ser igual o posterior al día de hoy"/>
+		);
+	} else {
+		return(		
+			<CardsConteiner>
+				{hotelsResult.map((hotel) => (
+					<Card {...hotel} key={hotel.slug} />
+				))}
+			</CardsConteiner>
+		);
+	};
 };
 
 export default Cards;

@@ -7,9 +7,6 @@ import {
     faMapMarker,
     faDollarSign
   } from "@fortawesome/free-solid-svg-icons";
-import moment from 'moment';
-import 'moment/locale/es';
-const dateFormat = 'dddd[,] D [de] MMMM [de] YYYY';
 
 const CardConteiner = styled.article`
     width: 28%;
@@ -81,12 +78,6 @@ function Card(props) {
                 <p>{props.description}</p>
 
                 <div>
-                    <div>
-                        Disponibilad desde el {' '}
-                        {moment(props.availabilityFrom).format(dateFormat)}
-                        {' '}hasta el {moment(props.availabilityTo).format(dateFormat)}
-                    </div>
-
                     <div className="item-info">
                         <span>
                             <FontAwesomeIcon icon={faMapMarker} color="black" />
@@ -111,17 +102,17 @@ function Card(props) {
                             <FontAwesomeIcon
                                 icon={faDollarSign}
                                 color="black"
+                                opacity={props.price > 1 ? "100%" : "50%"}
+                            />
+                            <FontAwesomeIcon
+                                icon={faDollarSign}
+                                color="black"
                                 opacity={props.price > 2 ? "100%" : "50%"}
                             />
                             <FontAwesomeIcon
                                 icon={faDollarSign}
                                 color="black"
                                 opacity={props.price > 3 ? "100%" : "50%"}
-                            />
-                            <FontAwesomeIcon
-                                icon={faDollarSign}
-                                color="black"
-                                opacity={props.price > 4 ? "100%" : "50%"}
                             />
                         </span>
                     </div>

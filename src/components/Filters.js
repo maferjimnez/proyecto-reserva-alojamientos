@@ -46,7 +46,7 @@ function Filters(){
                     ? {}
                     : moment(state.dateOut).format('YYYY[-]MM[-]DD')
             }
-            min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
+            // min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
             />
             
             <select name="country" onChange={handleInput}>
