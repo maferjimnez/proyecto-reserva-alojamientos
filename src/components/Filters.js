@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StateContext } from './StateContext';
 import styled from "styled-components";
 import moment from 'moment';
@@ -22,6 +22,16 @@ function Filters(){
         }
         const values = { ...state, [name]: value };
         setState(values);
+    };
+
+    const handleReset = (event) => {
+       setState({
+           dateIn: {},
+           dateOut: {},
+           country: "cualquier pais",
+           price: "cualquier precio",
+           size: "cualquier tamaño"
+       }); 
     };
 
     return(
@@ -72,7 +82,7 @@ function Filters(){
                 <option value="tamaño grande">Hotel grande</option>
             </select>
 
-            <button>Reset</button>
+            <button onClick={handleReset}>Reset</button>
         </Nav>
     )
 }
