@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { StateContext } from './StateContext';
+import Filters from './Filters.js';
+import background from '../assets/images/hotel-stairs.jpg'
 import styled from "styled-components";
 import moment from 'moment';
 import 'moment/locale/es';
@@ -7,28 +9,53 @@ moment.locale('es');
 
 
 const HeaderConteiner = styled.header`
-    background-image: url(https:/visit.freiburg.de/extension/portal-freiburg/var/storage/images/media/bibliothek/alle-anderen-bilder-1200x800px/02-planen/uebernachten/hotel-schluessel-c-dmitry-kalinovsky-shutterstock/35218-1-ger-DE/hotel-schluessel-c-dmitry-kalinovsky-shutterstock_grid_large.jpg); 
-    text-align: center;
-    padding: 3rem 8rem;
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
     color: white;
 
-    h1{
-        text-transform: uppercase;
-        letter-spacing: 5px;
+    ::before{
+        content: "";
+        background: url(${background}) no-repeat bottom;
+        filter: blur(2px);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        /* opacity: 0.9; */
+        z-index: -1;
     }
+
+    h1{
+        margin: 3rem 0 1rem 0;
+        text-transform: uppercase;
+        font-size: 5rem;
+        letter-spacing: 19px;
+    }
+
+    p{
+        font-size: 20px;
+        .date_text{
+            font-weight: 700;
+            text-decoration-line: underline;
+        }
+    }
+
 `
 
 function Header () {
     const [ state ] = useContext(StateContext);
     const dateFormat = 'dddd[,] D [de] MMMM [de] YYYY';
 
-
     return(
         <HeaderConteiner>
             <h1>Hoteles</h1>
-            <p>Día de llegada {moment(state.dateIn).format(dateFormat)}, día de salida {moment(state.dateOut).format(dateFormat)}</p>
+            <p>Desde el <span className="date_text">{moment(state.dateIn).format(dateFormat)}</span>, hasta el <span className="date_text">{moment(state.dateOut).format(dateFormat)}</span></p>
+            
+            <Filters />
         </HeaderConteiner>
     )
 }

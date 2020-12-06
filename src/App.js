@@ -1,6 +1,6 @@
 import GlobalStyles from './styles/globalStyles';
 import Header from './components/Header.js';
-import Filters from './components/Filters.js';
+// import Filters from './components/Filters.js';
 import Cards from './components/Cards.js';
 import { Provider } from './components/StateContext';
 
@@ -9,7 +9,7 @@ function App() {
     <Provider>
       <GlobalStyles/>
         <Header />
-        <Filters />
+        {/* <Filters /> */}
         <Cards />
     </Provider>
   );

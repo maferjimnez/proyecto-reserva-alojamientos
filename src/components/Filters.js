@@ -4,11 +4,13 @@ import styled from "styled-components";
 import moment from 'moment';
 
 const Nav = styled.nav`
-    padding: 1rem;
+    padding: 1.5rem 2rem;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
-    z-index: 100000000;
-    box-shadow: 0px 7px 6px 0px rgba(177,181,197,0.96);
+    background-color: rgba(255,255,255, 0.5);
+    position: absolute;
+    top: 47%;
 `
 
 function Filters(){
@@ -45,6 +47,7 @@ function Filters(){
                     ? {}
                     : moment(state.dateIn).format('YYYY[-]MM[-]DD')
             }
+            placeholder="check in"
             />
 
             <input
