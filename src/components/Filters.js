@@ -24,6 +24,16 @@ function Filters(){
         setState(values);
     };
 
+    const handleReset = (event) => {
+        setState({
+            dateIn: {},
+            dateOut: {},
+            country: "cualquier pais",
+            price: "cualquier precio",
+            size: "cualquier tamaño"
+        }); 
+     }
+
     return(
         <Nav>
             <input
@@ -72,9 +82,9 @@ function Filters(){
                 <option value="tamaño grande">Hotel grande</option>
             </select>
 
-            <button>Reset</button>
+            <button onClick={handleReset}>Reset</button>
         </Nav>
     )
 }
 
-export default Filters
+export default Filters;
