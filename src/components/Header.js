@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { StateContext } from './StateContext';
-import Filters from './Filters.js';
-import background from '../assets/images/hotel-stairs.jpg'
+import React from 'react';
 import styled from "styled-components";
-import moment from 'moment';
-import 'moment/locale/es';
-moment.locale('es');
+
+// import { StateContext } from './StateContext';
+import Filters from './Filters.js';
+import DescriptionText from './FiltersDescription.js';
+import background from '../assets/images/budapest_hotel.jpg'
 
 
 const HeaderConteiner = styled.header`
@@ -18,7 +17,7 @@ const HeaderConteiner = styled.header`
 
     ::before{
         content: "";
-        background: url(${background}) no-repeat bottom;
+        background: url(${background}) no-repeat center ;
         filter: blur(2px);
         position: absolute;
         top: 0px;
@@ -35,29 +34,17 @@ const HeaderConteiner = styled.header`
         font-size: 5rem;
         letter-spacing: 19px;
     }
-
-    p{
-        font-size: 20px;
-        .date_text{
-            font-weight: 700;
-            text-decoration-line: underline;
-        }
-    }
-
 `
 
-function Header () {
-    const [ state ] = useContext(StateContext);
-    const dateFormat = 'dddd[,] D [de] MMMM [de] YYYY';
 
+function Header () {
     return(
         <HeaderConteiner>
             <h1>Hoteles</h1>
-            <p>Desde el <span className="date_text">{moment(state.dateIn).format(dateFormat)}</span>, hasta el <span className="date_text">{moment(state.dateOut).format(dateFormat)}</span></p>
-            
+            <DescriptionText />
             <Filters />
         </HeaderConteiner>
     )
-}
+};
 
 export default Header;
