@@ -5,10 +5,14 @@ import moment from 'moment';
 import 'moment/locale/es';
 moment.locale('es');
 
-
-// ! NEXT COMMIT: AGREGO COMPONENTE PARA LA DESCRIPCION DE BUSQUEDA 
-
-
+const DescriptionContainer = styled.div`
+    height: fit-content;
+    width: 62%;
+    margin-top: 13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+`;
 
 const SpanFilters = styled.span`
         font-size: 22px;
@@ -30,13 +34,13 @@ function DescriptionText () {
     const displaySelectedPrice = (price) => {
         switch (price) {
             case "1":
-                return "Precio: Económico";
+                return "Precio del hotel: Bajo.";
             case "2":
-                return "Precio: Standard";
+                return "Precio del hotel: Intermedio.";
             case "3":
-                return "Precio: Distinguido";
+                return "Precio del hotel: Alto.";
             case "4":
-                return "Precio: Lujoso"
+                return "Precio del hotel: Muy alto"
             default:
                 return false;
         }
@@ -46,30 +50,30 @@ function DescriptionText () {
         if(country === 'cualquier pais'){
             return false
         } else {
-            return `Ubicado en: ${country}`
+            return `Ubicación del hotel: ${country}`
         }
     };
 
     const displaySelectedSize = (size) => {
         switch (size) {
             case 'tamaño pequeño':
-                return 'Hotel de tamaño: Pequeño';
+                return 'Tamaño del hotel: Pequeño';
             case 'tamaño mediano':
-                return 'Hotel de tamaño: Mediano';
+                return 'Tamaño del hotel: Mediano';
             case 'tamaño grande':
-                return 'Hotel de tamaño: Grande';
+                return 'Tamaño del hotel: Grande';
             default:
                 return false;
         }
     };
 
     return(
-        <div>
+        <DescriptionContainer>
             <DateText>Desde el <span className="date_text">{moment(state.dateIn).format(dateFormat)}</span>, hasta el <span className="date_text">{moment(state.dateOut).format(dateFormat)}</span></DateText>
             <SpanFilters>{displaySelectedPrice(state.price)}</SpanFilters>
             <SpanFilters>{displaySelectedCountry(state.country)}</SpanFilters>
             <SpanFilters>{displaySelectedSize(state.size)}</SpanFilters>
-        </div>
+        </DescriptionContainer>
     );
 };
 
