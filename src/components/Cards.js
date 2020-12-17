@@ -6,7 +6,7 @@ import Error from './Error';
 import styled from "styled-components";
 import moment from 'moment';
 
-const CardsConteiner = styled.div`
+const CardsConteiner = styled.main`
 	padding: 5rem;
 	display: flex;
 	justify-content: space-between;
@@ -79,15 +79,21 @@ function Cards() {
 	
 	if (hotelsResult.length === 0) {
 		return(
-			<Error e="Parece que tu busqueda no tiene resultados" />		
+			<CardsConteiner>
+				<Error e="Parece que tu busqueda no tiene resultados" />
+			</CardsConteiner>		
 		);
 	} else if (stateDateIn > stateDateOut) {
 		return(
-			<Error e="Debes seleccionar una fecha de salida posterior a la de entrada"/>
+			<CardsConteiner>
+				<Error e="Debes seleccionar una fecha de salida posterior a la de entrada"/>
+			</CardsConteiner>
 		);
 	} else if (stateDateIn < today) {
 		return(
-			<Error e="La fecha de entrada debe ser igual o posterior al día de hoy"/>
+			<CardsConteiner>
+			<	Error e="La fecha de entrada debe ser igual o posterior al día de hoy"/>
+			</CardsConteiner>
 		);
 	} else {
 		return(		
