@@ -101,7 +101,7 @@ function Card(props) {
     return(
         <CardConteiner>
 
-            <img src={props.photo} alt={props.name} />
+            <img src={props.photo} alt={`Imagen del hotel ${props.name}`} />
 
             <HotelInfo>
                 <h2>{props.name}</h2>
