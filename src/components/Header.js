@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-
 // import { StateContext } from './StateContext';
 import Filters from './Filters.js';
 import DescriptionText from './FiltersDescription.js';
@@ -15,7 +14,7 @@ const HeaderConteiner = styled.header`
 
     ::before{
         content: "";
-        background: url(${background}) 50% 350% fixed;
+        background: url(${background}) 50% 170% fixed;
         background-size: cover;
         filter: blur(1px);
         position: absolute;
