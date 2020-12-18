@@ -100,11 +100,11 @@ function Filters(){
                             ? {}
                             : moment(state.dateOut).format('YYYY[-]MM[-]DD')
                     }
-                    // min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
+                    min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
                     />
                 </div>
                 
-                <Select name="country" onChange={handleInput}>
+                <Select name="country" onChange={handleInput} value={state.country}>
                     <option value="cualquier pais">Todos los países</option>
                     <option value="Argentina">Argentina</option>
                     <option value="Brasil">Brasil</option>
@@ -112,7 +112,7 @@ function Filters(){
                     <option value="Uruguay">Uruguay</option>
                 </Select>
 
-                <Select name="price" onChange={handleInput}>
+                <Select name="price" onChange={handleInput} value={state.price}>
                     <option value="cualquier precio">Cualquier precio</option>
                     <option value="1">$</option>
                     <option value="2">$$</option>
@@ -120,7 +120,7 @@ function Filters(){
                     <option value="4">$$$$</option>
                 </Select>
 
-                <Select name="size" onChange={handleInput}>
+                <Select name="size" onChange={handleInput} value={state.size}>
                     <option value="cualquier tamaño">Cualquier tamaño</option>
                     <option value="tamaño pequeño">Hotel pequeño</option>
                     <option value="tamaño mediano">Hotel mediano</option>
