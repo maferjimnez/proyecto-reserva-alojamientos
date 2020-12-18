@@ -7,7 +7,7 @@ import background from '../assets/images/hotel_stairs.jpg'
 
 
 const HeaderConteiner = styled.header`
-    margin: 2rem;
+    margin: 2rem 3rem;
     height: 30rem;
     display: flex;
     color: white;
@@ -37,15 +37,24 @@ const HeaderConteiner = styled.header`
     }
 `;
 
+const HeaderText = styled.section`
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`;
+
 
 function Header () {
     return(
         <HeaderConteiner>
-            <div>
-                <h1>Hoteles</h1>
-                <p>Encuenta el lugar perfecto para desconectarte.</p>
+            <HeaderText>
+                <div>
+                    <h1>Hoteles</h1>
+                    <p>Encuenta el lugar perfecto para tu estadía.</p>
+                </div>
                 <DescriptionText />
-            </div>
+            </HeaderText>
             <Filters />
         </HeaderConteiner>
     )

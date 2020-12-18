@@ -1,31 +1,31 @@
 import React, { useContext } from 'react';
 import { StateContext } from './StateContext';
+// import { PriceRange } from './Cards';
 import styled from "styled-components";
 import moment from 'moment';
 import 'moment/locale/es';
 moment.locale('es');
 
-const DescriptionContainer = styled.div`
-    height: fit-content;
+const DescriptionContainer = styled.span`
     width: 62%;
-    margin-top: 13rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    p{
+        font-size: 23px;
+    }
 `;
 
-const SpanFilters = styled.span`
-        font-size: 22px;
-        margin-top: 5px;
-`
 
-const DateText = styled.p`
+const DateText = styled.span`
         font-size: 20px;
         .date_text{
             font-weight: 700;
             text-decoration-line: underline;
         }
-`
+`;
 
 function DescriptionText () {
     const [ state ] = useContext(StateContext);
@@ -34,13 +34,13 @@ function DescriptionText () {
     const displaySelectedPrice = (price) => {
         switch (price) {
             case "1":
-                return "Precio del hotel: Bajo.";
+                return " de precio bajo";
             case "2":
-                return "Precio del hotel: Intermedio.";
+                return " de precio intermedio";
             case "3":
-                return "Precio del hotel: Alto.";
+                return " de precio alto";
             case "4":
-                return "Precio del hotel: Muy alto"
+                return " de precio muy alto"
             default:
                 return false;
         }
@@ -50,18 +50,18 @@ function DescriptionText () {
         if(country === 'cualquier pais'){
             return false
         } else {
-            return `Ubicación del hotel: ${country}`
+            return `, en ${country},`
         }
     };
 
     const displaySelectedSize = (size) => {
         switch (size) {
             case 'tamaño pequeño':
-                return 'Tamaño del hotel: Pequeño';
+                return ' y de tamaño pequeño.';
             case 'tamaño mediano':
-                return 'Tamaño del hotel: Mediano';
+                return ' y de tamaño mediano.';
             case 'tamaño grande':
-                return 'Tamaño del hotel: Grande';
+                return ' y de tamaño grande.';
             default:
                 return false;
         }
@@ -69,10 +69,12 @@ function DescriptionText () {
 
     return(
         <DescriptionContainer>
-            <DateText>Desde el <span className="date_text">{moment(state.dateIn).format(dateFormat)}</span>, hasta el <span className="date_text">{moment(state.dateOut).format(dateFormat)}</span></DateText>
-            <SpanFilters>{displaySelectedPrice(state.price)}</SpanFilters>
-            <SpanFilters>{displaySelectedCountry(state.country)}</SpanFilters>
-            <SpanFilters>{displaySelectedSize(state.size)}</SpanFilters>
+            <p>Estás buscando hoteles {' '}
+                <DateText>desde el <span className="date_text">{moment(state.dateIn).format(dateFormat)}</span>, hasta el <span className="date_text">{moment(state.dateOut).format(dateFormat)}</span></DateText>
+                {displaySelectedCountry(state.country)}
+                {displaySelectedPrice(state.price)}
+                {displaySelectedSize(state.size)}
+            </p>
         </DescriptionContainer>
     );
 };

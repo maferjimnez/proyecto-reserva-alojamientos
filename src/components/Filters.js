@@ -4,7 +4,6 @@ import styled from "styled-components";
 import moment from 'moment';
 
 const Nav = styled.nav`
-    margin: 2rem 2rem 2rem 6rem;
     padding: 1.5rem 2rem;
     width: 36%;
     background-color: rgba(255,255,255, 0.5);
@@ -100,7 +99,7 @@ function Filters(){
                             ? {}
                             : moment(state.dateOut).format('YYYY[-]MM[-]DD')
                     }
-                    min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
+                    // min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
                     />
                 </div>
                 
