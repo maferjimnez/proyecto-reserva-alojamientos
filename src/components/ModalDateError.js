@@ -1,8 +1,12 @@
 import React from 'react';
+
+// libraries
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+
+// assets
 import dateError from '../assets/images/no_result_date.png';
 
 const useStyles = makeStyles((theme) => ({

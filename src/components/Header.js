@@ -1,8 +1,12 @@
 import React from 'react';
+// libraries
 import styled from "styled-components";
-// import { StateContext } from './StateContext';
+
+// components
 import Filters from './Filters.js';
 import DescriptionText from './FiltersDescription.js';
+
+//assets
 import background from '../assets/images/hotel_stairs.jpg'
 
 
@@ -11,7 +15,6 @@ const HeaderConteiner = styled.header`
     height: 30rem;
     display: flex;
     color: white;
-
     ::before{
         content: "";
         background: url(${background}) 50% 170% fixed;
@@ -24,14 +27,12 @@ const HeaderConteiner = styled.header`
         left: 0px;
         z-index: -1;
     }
-
     h1{
         margin-top: 1rem;
         text-transform: uppercase;
         font: 500 6rem Garamong, serif;
         letter-spacing: 15px;
     }
-
     p{
         font-size: 20px;
     }
@@ -43,7 +44,6 @@ const HeaderText = styled.section`
     flex-direction: column;
     justify-content: space-between;
 `;
-
 
 function Header () {
     return(

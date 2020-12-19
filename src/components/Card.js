@@ -106,13 +106,10 @@ function Card(props) {
     };
     return(
         <CardConteiner>
-
             <img src={props.photo} alt={`Imagen del hotel ${props.name}`} />
-
             <HotelInfo>
                 <h2>{props.name}</h2>
                 <HotelDescription>{props.description}</HotelDescription>
-
                 <div>
                     <HotelIconsContainer className="item-info">
                         <HotelIcons>
@@ -120,14 +117,12 @@ function Card(props) {
                         </HotelIcons>
                         <HotelIconText>{props.country}, {props.city}</HotelIconText>
                     </HotelIconsContainer>
-
                     <HotelIconsContainer className="item-info">
                         <HotelIcons>
                             <FontAwesomeIcon icon={faBed} color="#EBECF0" />
                         </HotelIcons>
                         <HotelIconText>{props.rooms} Habitaciones.</HotelIconText>
                     </HotelIconsContainer>
-
                     <HotelIconsContainer className="item-info">
                         <HotelIconPrice>
                             <FontAwesomeIcon
@@ -153,11 +148,10 @@ function Card(props) {
                         </HotelIconPrice>
                     </HotelIconsContainer>
                 </div>
-
                 <BtnReserva>Reservar</BtnReserva>
             </HotelInfo>
         </CardConteiner>
     )
-}
+};
 
 export default Card;

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { StateContext } from './StateContext';
+// libraries
 import styled from "styled-components";
 import moment from 'moment';
 import 'moment/locale/es';
@@ -11,12 +12,10 @@ const DescriptionContainer = styled.span`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
     p{
         font-size: 23px;
     }
 `;
-
 
 const DateText = styled.span`
         font-size: 20px;

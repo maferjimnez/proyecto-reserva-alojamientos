@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-// import resultError from '../assets/images/no_result_search.png';
 
 const ErrorContainer = styled.div`
     width: 100%;
@@ -8,11 +7,9 @@ const ErrorContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     .result_error_img{
         width: 13%;
     }
-    
     .error_paragraph{
         font-size: 20px;
     }

@@ -1,14 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { StateContext } from './StateContext';
-import hotelsData from "../assets/script/data";
-import resultError from '../assets/images/no_result_search.png';
+// components
 import Card from './Card';
 import Error from './Error';
 import DateErrorModal from './ModalDateError';
+
+//assets
+import hotelsData from "../assets/script/data";
+import resultError from '../assets/images/no_result_search.png';
+
+//libraries
 import styled from "styled-components";
 import moment from 'moment';
-
-
 
 const CardsConteiner = styled.main`
 	padding: 5rem;
@@ -46,7 +49,6 @@ function Cards() {
 	const filterDate = (hotel) => {
 		const dateAvaiableFrom = moment(hotel.availabilityFrom).format(dateFormat);
 		const dateAvailableTo = moment(hotel.availabilityTo).format(dateFormat);
-	
 		if (
 			Object.keys(state.dateIn).length === 0 ||
 			Object.keys(state.dateOut).length === 0 ||

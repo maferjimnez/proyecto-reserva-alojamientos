@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { StateContext } from './StateContext';
+// libraries
 import styled from "styled-components";
 import moment from 'moment';
 
@@ -52,7 +53,6 @@ const Button = styled.button`
 `;
 
 function Filters(){
-
     const [state, setState] = useContext(StateContext);
 
     const handleInput = (event) => {
@@ -88,7 +88,6 @@ function Filters(){
                             : moment(state.dateIn).format('YYYY[-]MM[-]DD')
                     }
                     />
-
                     <Input
                     name="dateOut"
                     type="date"
@@ -99,8 +98,7 @@ function Filters(){
                             : moment(state.dateOut).format('YYYY[-]MM[-]DD')
                     }
                     />
-                </div>
-                
+                </div>                
                 <Select name="country" onChange={handleInput} value={state.country}>
                     <option value="cualquier pais">Todos los países</option>
                     <option value="Argentina">Argentina</option>
@@ -108,7 +106,6 @@ function Filters(){
                     <option value="Chile">Chile</option>
                     <option value="Uruguay">Uruguay</option>
                 </Select>
-
                 <Select name="price" onChange={handleInput} value={state.price}>
                     <option value="cualquier precio">Cualquier precio</option>
                     <option value="1">$</option>
@@ -116,19 +113,16 @@ function Filters(){
                     <option value="3">$$$</option>
                     <option value="4">$$$$</option>
                 </Select>
-
                 <Select name="size" onChange={handleInput} value={state.size}>
                     <option value="cualquier tamaño">Cualquier tamaño</option>
                     <option value="tamaño pequeño">Hotel pequeño</option>
                     <option value="tamaño mediano">Hotel mediano</option>
                     <option value="tamaño grande">Hotel grande</option>
                 </Select>
-
-            </InputsContainer>
-            
+            </InputsContainer>           
             <Button onClick={handleReset}>Reset</Button>
         </Nav>
-    )
+    );
 };
 
 export default Filters;
