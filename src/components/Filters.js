@@ -87,7 +87,6 @@ function Filters(){
                             ? {}
                             : moment(state.dateIn).format('YYYY[-]MM[-]DD')
                     }
-                    placeholder="check in"
                     />
 
                     <Input
@@ -99,7 +98,6 @@ function Filters(){
                             ? {}
                             : moment(state.dateOut).format('YYYY[-]MM[-]DD')
                     }
-                    // min={moment(state.dateIn).format("YYYY[-]MM[-]DD")}
                     />
                 </div>
                 

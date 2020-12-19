@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-// import variables from "./..assets/globalStyles" 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faBed,
@@ -98,6 +97,13 @@ const BtnReserva = styled.button`
 `;
 
 function Card(props) {
+
+    const PriceRange = {
+        cheap: 0,
+        affordable: 1,
+        expensive: 2,
+        veryExpensive: 3
+    };
     return(
         <CardConteiner>
 
@@ -127,22 +133,22 @@ function Card(props) {
                             <FontAwesomeIcon
                                 icon={faDollarSign}
                                 color="#EBECF0"
-                                opacity={props.price > 0 ? "100%" : "50%"}
+                                opacity={props.price > PriceRange.cheap ? "100%" : "50%"}
                             />
                             <FontAwesomeIcon
                                 icon={faDollarSign}
                                 color="#EBECF0"
-                                opacity={props.price > 1 ? "100%" : "50%"}
+                                opacity={props.price > PriceRange.affordable ? "100%" : "50%"}
                             />
                             <FontAwesomeIcon
                                 icon={faDollarSign}
                                 color="#EBECF0"
-                                opacity={props.price > 2 ? "100%" : "50%"}
+                                opacity={props.price > PriceRange.expensive ? "100%" : "50%"}
                             />
                             <FontAwesomeIcon
                                 icon={faDollarSign}
                                 color="#EBECF0"
-                                opacity={props.price > 3 ? "100%" : "50%"}
+                                opacity={props.price > PriceRange.veryExpensive ? "100%" : "50%"}
                             />
                         </HotelIconPrice>
                     </HotelIconsContainer>

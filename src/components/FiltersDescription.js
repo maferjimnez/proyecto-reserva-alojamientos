@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { StateContext } from './StateContext';
-// import { PriceRange } from './Cards';
 import styled from "styled-components";
 import moment from 'moment';
 import 'moment/locale/es';
