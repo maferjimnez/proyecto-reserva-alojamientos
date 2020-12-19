@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import resultError from '../assets/images/no_result_search.png';
+// import resultError from '../assets/images/no_result_search.png';
 
 const ErrorContainer = styled.div`
     width: 100%;
@@ -21,9 +21,9 @@ const ErrorContainer = styled.div`
 const Error = (props) => {
     return(
         <ErrorContainer>
-            <img className="result_error_img" src={resultError} alt='Ilustración de error de búsqueda' />
+            <img className="result_error_img" src={props.i} alt='Ilustración de error de búsqueda' />
             <h2 className="error_title">Bueno, esto es incómodo...</h2>
-            <p className="error_paragraph">{props.e}, por favor intenta filtrar de nuevo.</p>
+            <p className="error_paragraph">{props.t}, por favor intenta filtrar de nuevo.</p>
         </ErrorContainer>
     );
 };

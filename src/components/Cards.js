@@ -1,26 +1,47 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { StateContext } from './StateContext';
 import hotelsData from "../data";
+import resultError from '../assets/images/no_result_search.png';
 import Card from './Card';
 import Error from './Error';
+import DateErrorModal from './ModalDateError';
 import styled from "styled-components";
 import moment from 'moment';
+
+
 
 const CardsConteiner = styled.main`
 	padding: 5rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-wrap: wrap;
 	background-color: #EBECF0;
 `
 
 function Cards() {
-	const [state] = useContext(StateContext);
-
+	const [state, setState] = useContext(StateContext);
 	const dateFormat = 'YYYY-MM-DD';
 	const stateDateIn = moment(state.dateIn).format(dateFormat);
 	const stateDateOut = moment(state.dateOut).format(dateFormat);
 	const today = moment().format(dateFormat);
+	const [open, setOpen] = useState(true);
+
+	const handleCloseModal = () => {
+		setOpen(false);
+		setState({
+            dateIn: {},
+            dateOut: {},
+            country: "cualquier pais",
+            price: "cualquier precio",
+            size: "cualquier tamaño"
+        }); 
+	};
+
+	useEffect(() => {
+		return () => {
+			setOpen(true);
+		};
+	}, [state.dateIn]);
 	
 	const filterDate = (hotel) => {
 		const dateAvaiableFrom = moment(hotel.availabilityFrom).format(dateFormat);
@@ -33,7 +54,7 @@ function Cards() {
 			stateDateOut <= dateAvailableTo)
 		)
 		return true;
-	}
+	};
 
 	const filterCountry = (hotel) => {
 		if (
@@ -75,24 +96,23 @@ function Cards() {
 	};
 
 	const hotelsResult = hotelsData.filter(filterValidator);
-	console.log(hotelsResult); // *! BORRAR ANTES DE ENTREGAR !* //
 	
 	if (hotelsResult.length === 0) {
 		return(
 			<CardsConteiner>
-				<Error e="Parece que tu busqueda no tiene resultados" />
+				<Error i={resultError} t="No se han escontrado hoteles con las características seleccionadas"/>
 			</CardsConteiner>		
 		);
 	} else if (stateDateIn > stateDateOut) {
 		return(
 			<CardsConteiner>
-				<Error e="Debes seleccionar una fecha de salida posterior a la de entrada"/>
+				<Error i={resultError} t="La fecha de salida debe ser posterior a la fecha de entrada"/>
 			</CardsConteiner>
 		);
 	} else if (stateDateIn < today) {
 		return(
 			<CardsConteiner>
-			<	Error e="La fecha de entrada debe ser igual o posterior al día de hoy"/>
+				<DateErrorModal handleClose={handleCloseModal} open={open}/>
 			</CardsConteiner>
 		);
 	} else {
