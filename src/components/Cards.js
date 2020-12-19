@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { StateContext } from './StateContext';
-import hotelsData from "../data";
+import hotelsData from "../assets/script/data";
 import resultError from '../assets/images/no_result_search.png';
 import Card from './Card';
 import Error from './Error';
