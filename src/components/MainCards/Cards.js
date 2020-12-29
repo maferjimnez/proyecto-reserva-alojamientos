@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { StateContext } from './StateContext';
+import { StateContext } from '../StateContext';
 // components
 import Card from './Card';
-import Error from './Errors/Error';
-import DateErrorModal from './Errors/ModalDateError';
+import Error from '../Errors/Error';
+import DateErrorModal from '../Errors/ModalDateError';
 
 //assets
-import hotelsData from "../assets/script/data";
-import resultError from './Errors/assets/images/no_result_search.png';
+import hotelsData from "./assets/script/data";
+import resultError from '../Errors/assets/images/no_result_search.png';
 
 //libraries
 import styled from "styled-components";
