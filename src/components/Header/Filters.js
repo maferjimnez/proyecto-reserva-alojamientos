@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StateContext } from './StateContext';
+import { StateContext } from '../StateContext';
 // libraries
 import styled from "styled-components";
 import moment from 'moment';

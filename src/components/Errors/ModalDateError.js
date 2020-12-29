@@ -7,7 +7,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
 // assets
-import dateError from '../assets/images/no_result_date.png';
+import dateError from './assets/images/no_result_date.png';
 
 const useStyles = makeStyles((theme) => ({
 	modal: {
