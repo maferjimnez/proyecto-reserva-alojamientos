@@ -7,7 +7,7 @@ import {
     faDollarSign
   } from "@fortawesome/free-solid-svg-icons";
 
-const CardConteiner = styled.article`
+const CardContainer = styled.section`
     width: 28%;
     padding: 1.5rem;
     border-radius: 8px;
@@ -21,7 +21,7 @@ const CardConteiner = styled.article`
     }    
 `;
 
-const HotelInfo = styled.section`
+const HotelInfo = styled.div`
         height: 63%;
         width: 109%;
         padding: 8px 1rem;
@@ -105,7 +105,7 @@ function Card(props) {
         veryExpensive: 3
     };
     return(
-        <CardConteiner>
+        <CardContainer>
             <img src={props.photo} alt={`Imagen del hotel ${props.name}`} />
             <HotelInfo>
                 <h2>{props.name}</h2>
@@ -150,7 +150,7 @@ function Card(props) {
                 </div>
                 <BtnReserva>Reservar</BtnReserva>
             </HotelInfo>
-        </CardConteiner>
+        </CardContainer>
     )
 };
 
